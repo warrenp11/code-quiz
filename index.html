@@ -8,45 +8,56 @@
 
     <!-- links to css and bootstrap-->
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
+
 <body>
     <!-- all page content -->
-    <div class="container">
+    <div id="container-main" class="container-fluid">
 
         <!-- highscore and timer -->
-        <header>
-            <div id="highscores">
-
+        <div class="row">
+            <div id="highscores" class="col text-left">
+                <a href="#" id="viewHighScores">View High Scores</a>
             </div>
-            <div id="timer">
-
+            <div class="col-8"></div>
+            <div id="timer" class="col text-right">
+                Time: <span id="timeLeft">0</span>
             </div>
-        </header>
+            <div id="timesUp" class="col text-right" style="display: none;">Time's Up!</div>
+        </div>
 
-        <!-- main content -->
-        <main>
-            <!-- start screen -->
-            <div id="start">
+        <div id="container-quiz" class="row">
+            <div class="col-md-2"></div>
+                <!-- main content -->
+                <main>
+                    <!-- start screen -->
+                    <div id="start" class="col-md-8">
+                        <h1>Coding Quiz Challenge</h1>
+                        <p>
+                            Let's test your knowledge of JavaScript and other fundamentals! Try to answer the following code-related questions within the time limit. Incorrect answers will deduct 10 seconds from the timer. Good luck!
+                        </p>
+                        <button type="button" class="btn btn-primary">Start Quiz</button>
+                    </div>
 
-            </div>
+                    <!-- quiz section -->
+                    <div id="quiz">
 
-            <!-- quiz section -->
-            <div id="quiz">
+                    </div>
 
-            </div>
+                    <!-- final score and enter initials-->
+                    <div id="score">
 
-            <!-- final score and enter initials-->
-            <div id="score">
+                    </div>
 
-            </div>
+                    <!-- list of highscores -->
+                    <div id="highscores-list">
 
-            <!-- list of highscores -->
-            <div id="highscores-list">
-
-            </div>
-        </main>
-
-
+                    </div>
+                </main>
+            <div class="col-md-2"></div>
+        </div>
     </div>
 </body>
+
 </html>
