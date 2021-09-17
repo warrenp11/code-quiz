@@ -50,7 +50,8 @@ var clearHighScores = document.getElementById("clear-scores-btn");
 // GLOBAL VARIABLES
 // *****************
 
-var questions = [
+
+const questions = [
     {
         question: "What does 2 + 2 equal?",
         choices: ["a. 1", "b. 2", "c. 3", "d. 4"],
@@ -78,8 +79,20 @@ var questions = [
     }
 ];
 
-var totalTime = 100;
+
+// var questions = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30];
+
+
+
+var totalTime = 60;
 var correctAns = 0;
+var questionIndex =0;
+
+
+
+console.log(questions[questionIndex].question);
+console.log(questions[questionIndex].choices);
+console.log(questions[questionIndex].answer);
 
 
 // **********
@@ -109,21 +122,32 @@ var startQuiz = function() {
     newQuiz();
 };
 
+
 // QUIZ function
 var newQuiz = function() {
     // * THEN I am presented with a question
     nextQuestion();
 };
 
-var nextQuestion = function() {
+/*var randomQuestion = function(questions) {
+    var randomIndex = [Math.floor(Math.random() * questions.length)];
+    return randomIndex;
+};*/
+
+/*var nextQuestion = function() {
     // chooses random question from a questions array, with question id
-    questionTitle.textContent = questions[0].question;
+    var randomQuestion = function(questions) {
+        var randomIndex = [Math.floor(Math.random() * questions.length)];
+        return randomIndex;
+    };
     // shows the available answers to the pulled question matching question id
-    choiceA.textContent = questions[0].choices[0];
-    choiceB.textContent = questions[0].choices[1];
-    choiceC.textContent = questions[0].choices[2];
-    choiceD.textContent = questions[0].choices[3];
-};
+    // choiceA.textContent = questions[0].choices[0];
+    // choiceB.textContent = questions[0].choices[1];
+    // choiceC.textContent = questions[0].choices[2];
+    // choiceD.textContent = questions[0].choices[3];
+};*/
+
+//var nextQuestion()
 
 // * WHEN I answer a question
 var chooseA = function (){
@@ -149,8 +173,9 @@ var checkAnswer = function(answer) {
         wrongOrRight.textContent = "Correct!";
     } else {
         // wrong answer, subtract 10s from timer
-        totalTime--;
-        wrongOrRight.textContent = "Wrong! The correct answer is: " + questions[i].answer;
+        totalTime-=10;
+        timeLeft.textContent = totalTime;
+        wrongOrRight.textContent = "Wrong! The correct answer is: " + questions[0].answer;
     }
 };
 // * THEN I am presented with another question
