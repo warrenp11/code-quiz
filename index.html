@@ -19,12 +19,12 @@
         <div class="row">
             <div class="col text-left pt-4">
                 <!-- *** style this as a button later *** -->
-                <a href="#" id="viewHighScores">View High Scores</a>
+                <a href="#" id="view-high-scores">View High Scores</a>
             </div>
             <div id="timer" class="col text-right pt-4">
                 Time: <span id="timeLeft">0</span>
             </div>
-            <div id="timesUp" class="col text-right" style="display: none;">Time's Up!</div>
+            <div id="times-up" class="col text-right" style="display: none;">Time's Up!</div>
         </div>
         <!-- end section -->
 
@@ -59,11 +59,13 @@
                     <!-- quiz div end -->
 
                     <!-- final score div -->
-                    <div id="score">
-                        <h2 class="font-weight-bold">Your final score is !</h2>
+                    <div id="score" class="justify-content-center pl-5 pt-5 ml-2">
+                        <h2 class="font-weight-bold">Your final score is <span id="finalScore"></span> !</h2>
                         <form>
-                            <label for="initials">Enter Your Initials:</label>
-                            <input id="initials-input" type="text" class=""
+                            <p class="pt-2 pb-3 m-2 font-weight-bold">Enter your initials:
+                                <input id="initials-input" type="text" class="form-control pt-2 pb-3 mt-2">
+                                <button id="submit-score" type="submit" value="submit" class="btn btn-success mt-3">Submit</button>
+                            </p>
                         </form>
                     </div>
                     <!-- final score div end -->
