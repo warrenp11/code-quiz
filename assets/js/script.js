@@ -59,6 +59,4 @@ var totalTime = ;
 // **********
 
 // * WHEN I click the start button, timer starts
-var newQuiz = function() {
 
-};
