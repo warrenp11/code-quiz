@@ -80,6 +80,7 @@ var questions = [
 
 var totalTime = 100;
 var correctAns = 0;
+var questionIndex = 0;
 
 
 // **********
@@ -116,13 +117,38 @@ var newQuiz = function() {
 };
 
 var nextQuestion = function() {
-    // chooses random question from a questions array, with question id
-    questionTitle.textContent = questions[0].question;
-    // shows the available answers to the pulled question matching question id
-    choiceA.textContent = questions[0].choices[0];
-    choiceB.textContent = questions[0].choices[1];
-    choiceC.textContent = questions[0].choices[2];
-    choiceD.textContent = questions[0].choices[3];
+    questionTitle.textContent = questions[questionIndex].question;
+
+    choiceA.textContent = questions[questionIndex].choices[0];
+    choiceB.textContent = questions[questionIndex].choices[1];
+    choiceC.textContent = questions[questionIndex].choices[2];
+    choiceD.textContent = questions[questionIndex].choices[3];
+};
+
+
+
+// after question is answered, show if wrong or right
+var checkAnswer = function(answer) {
+    wrongOrRight.style.display = "block";
+    
+    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+        // correct answer, add 1 to score
+        correctAns++;
+        wrongOrRight.textContent = "Correct!";
+    } else {
+        // wrong answer, subtract 10s from timer
+        totalTime -= 10;
+        wrongOrRight.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
+    }
+
+    // * THEN I am presented with another question
+    questionIndex++;
+    if (questionIndex < questions.length) {
+        nextQuestion();
+    } else {
+        // no more questions, game over
+        gameOver();
+    }
 };
 
 // * WHEN I answer a question
@@ -139,21 +165,6 @@ var chooseD = function (){
     checkAnswer(3);
 };
 
-// after question is answered, show if wrong or right
-var checkAnswer = function(answer) {
-    wrongOrRight.style.display = "block";
-    
-    if (questions[0].answer === questions[0].choices[answer]) {
-        // correct answer, add 1 to score
-        correctAns++;
-        wrongOrRight.textContent = "Correct!";
-    } else {
-        // wrong answer, subtract 10s from timer
-        totalTime--;
-        wrongOrRight.textContent = "Wrong! The correct answer is: " + questions[i].answer;
-    }
-};
-// * THEN I am presented with another question
 
 // game over
 var gameOver = function() {
