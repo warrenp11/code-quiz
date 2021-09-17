@@ -50,8 +50,35 @@ var clearHighScores = document.getElementById("clear-scores-btn");
 // GLOBAL VARIABLES
 // *****************
 
-var questions = [];
-var totalTime = 3;
+var questions = [
+    {
+        question: "What does 2 + 2 equal?",
+        choices: ["a. 1", "b. 2", "c. 3", "d. 4"],
+        answer: "d. 4"
+    },
+    {
+        question: "What is the first letter of the alphabet",
+        choices: ["a. a", "b. b", "c. c", "d. d"],
+        answer: "a. a"
+    },
+    {
+        question: "Who is the current President of the US?",
+        choices: ["a. Obama", "b. Biden", "c. Clinton", "d. Bush"],
+        answer: "b. Biden"
+    },
+    {
+        question: "What color is the sky (most often)?",
+        choices: ["a. Grey", "b. Yellow", "c. Purple", "d. Blue"],
+        answer: "d. Blue"
+    },
+    {
+        question: "Which of the following animals makes a 'woof' sound?",
+        choices: ["a. cat", "b. bird", "c. dog", "d. elephant"],
+        answer: "c. dog"
+    }
+];
+
+var totalTime = 100;
 var correctAns = 0;
 
 
@@ -90,9 +117,43 @@ var newQuiz = function() {
 
 var nextQuestion = function() {
     // chooses random question from a questions array, with question id
-
+    questionTitle.textContent = questions[0].question;
     // shows the available answers to the pulled question matching question id
+    choiceA.textContent = questions[0].choices[0];
+    choiceB.textContent = questions[0].choices[1];
+    choiceC.textContent = questions[0].choices[2];
+    choiceD.textContent = questions[0].choices[3];
 };
+
+// * WHEN I answer a question
+var chooseA = function (){
+    checkAnswer(0);
+};
+var chooseB = function (){
+    checkAnswer(1);
+};
+var chooseC = function (){
+    checkAnswer(2);
+};
+var chooseD = function (){
+    checkAnswer(3);
+};
+
+// after question is answered, show if wrong or right
+var checkAnswer = function(answer) {
+    wrongOrRight.style.display = "block";
+    
+    if (questions[0].answer === questions[0].choices[answer]) {
+        // correct answer, add 1 to score
+        correctAns++;
+        wrongOrRight.textContent = "Correct!";
+    } else {
+        // wrong answer, subtract 10s from timer
+        totalTime--;
+        wrongOrRight.textContent = "Wrong! The correct answer is: " + questions[i].answer;
+    }
+};
+// * THEN I am presented with another question
 
 // game over
 var gameOver = function() {
@@ -114,5 +175,9 @@ var gameOver = function() {
 // *****************
 
 startQuizBtn.addEventListener("click", startQuiz);
+choiceA.addEventListener("click", chooseA);
+choiceB.addEventListener("click", chooseB);
+choiceC.addEventListener("click", chooseC);
+choiceD.addEventListener("click", chooseD);
 
 //submitBtn.addEventListener("click", );
