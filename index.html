@@ -19,16 +19,16 @@
         <div class="row">
             <div class="col text-left pt-4">
                 <!-- *** style this as a button later *** -->
-                <a href="#" id="view-high-scores">View High Scores</a>
+                <a href="#highscores" id="view-high-scores">View High Scores</a>
             </div>
             <div id="timer" class="col text-right pt-4">
-                Time: <span id="timeLeft">0</span>
+                Time: <span id="time-left">0</span>
             </div>
             <div id="times-up" class="col text-right" style="display: none;">Time's Up!</div>
         </div>
         <!-- end section -->
 
-        <!-- main content container: start ,quiz, messages -->
+        <!-- main content container: start ,quiz, final score, highscores -->
         <div id="content-container" class="row text-left">
             <!--empty div for spacing-->
             <div class="col-md-2"></div>
@@ -45,7 +45,7 @@
 
                     <!-- quiz div -->
                     <div id="quiz">
-                        <p id="question" class="justify-content-center  font-weight-bold pl-5 pt-5 ml-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, sunt!</p>
+                        <p id="questions" class="justify-content-center  font-weight-bold pl-5 pt-5 ml-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, sunt!</p>
                         <div id="answers=" class="justify-content-center pl-5 pt-2 pb-3 m-2">
                             <p><button id="btn-1" type="button" class="btn btn-secondary">Lorem ipsum dolor sit amet.</button></p>
                             <p><button id="btn-2" type="button" class="btn btn-secondary">Lorem, ipsum.</button></p>
@@ -74,18 +74,26 @@
                     <div id="highscores" class="pl-5 pt-5 ml-2 justify-content-center">
                         <h2 class="font-weight-bold">High Scores</h2>
                         <!-- list of saved high scores -->
-                        <div id="highscores-list" class="list-group list-group-flush">
-                            lorem: 55
+                        <div id="highscores-list" class="list-group list-group-flush pt-2 pb-3 mb-2">
                             <p>
-                                <button id="go-back" type="submit" class="btn btn-secondary mt-3 mr-3">Go Back</button>
-                                <button id="clear-scores" type="submit" class="btn btn-danger mt-3">Clear High Scores</button>
+                                1. lorem: 55</br>
+                                2. lorem: 50</br>
+                                3. lorem: 10</br>
+                                4. me: 1
                             </p>
                         </div>
+                            <p>
+                                <button id="go-back-btn" type="submit" class="btn btn-secondary mt-3 mr-3">Go Back</button>
+                                <button id="clear-scores-btn" type="submit" class="btn btn-danger mt-3">Clear High Scores</button>
+                            </p>
                     </div>
                     <!-- highscores list div end -->
                 </main>
-            <div class="col-md-2"></div><!--empty div for spacing-->
+            <!--empty div for spacing-->
+            <div class="col-md-2"></div>
+        <!-- end of main content container -->
         </div>
+    <!-- end of page content container -->    
     </div>
 </body>
 
