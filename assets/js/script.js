@@ -37,8 +37,8 @@ var choiceD = document.getElementById("btn-4");
 var wrongOrRight = document.getElementById("wrong-or-right");
 // final score page
 var score = document.getElementById("score");
-var choiceB = document.getElementById("initials-input");
-var choiceC = document.getElementById("submit-score");
+var intitals = document.getElementById("initials-input");
+var submitBtn = document.getElementById("submit-score");
 var finalScore = document.getElementById("finalScore")
 // highscores page
 var highScores = document.getElementById("highscores");
@@ -51,12 +51,68 @@ var clearHighScores = document.getElementById("clear-scores-btn");
 // *****************
 
 var questions = [];
-var totalTime = ;
+var totalTime = 3;
+var correctAns = 0;
 
 
 // **********
 // FUNCTIONS
 // **********
 
-// * WHEN I click the start button, timer starts
+// * WHEN I click the start button
+var startQuiz = function() {
+    // start page disappears
+    startDiv.style.display = "none";
+    quizDiv.style.display = "block";
+    timer.style.display = "block";
 
+    // * THEN a timer starts
+    var startTimer = setInterval(function() {
+        timeLeft.textContent = totalTime;
+        // deduct 1 every second
+        totalTime--;
+        // if timer runs out
+        if (totalTime <= 0) {
+            clearInterval(startTimer);
+            gameOver();
+        }
+    },1000);
+
+    // starts new quiz
+    newQuiz();
+};
+
+// QUIZ function
+var newQuiz = function() {
+    // * THEN I am presented with a question
+    nextQuestion();
+};
+
+var nextQuestion = function() {
+    // chooses random question from a questions array, with question id
+
+    // shows the available answers to the pulled question matching question id
+};
+
+// game over
+var gameOver = function() {
+    score.style.display = "block";
+    timesUp.style.display = "block";
+    startDiv.style.display = "none";
+    quizDiv.style.display = "none";
+    timer.style.display = "none";
+
+    // show final score
+    finalScore.textContent = correctAns;
+};
+
+
+
+
+// *****************
+// EVENT LISTENERS
+// *****************
+
+startQuizBtn.addEventListener("click", startQuiz);
+
+//submitBtn.addEventListener("click", );
