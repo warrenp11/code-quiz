@@ -1,4 +1,6 @@
-// ## Acceptance Criteria
+// ***********************
+// ## ACCEPTANCE CRITERIA
+// ***********************
 // * GIVEN I am taking a code quiz
 // * WHEN I click the start button
 // * THEN a timer starts and I am presented with a question
@@ -11,11 +13,8 @@
 // * WHEN the game is over
 // * THEN I can save my initials and score
 
-// GLOBAL VARIABLES
-var questions = [];
 
 // REFERENCES TO DOCUMENT ELEMENTS
-
 // view high scores element
 var viewHighScores = document.getElementById("view-high-scores");
 // timer element
@@ -46,3 +45,20 @@ var highScores = document.getElementById("highscores");
 var highScoresList = document.getElementById("highscores-list");
 var goBackBtn = document.getElementById("go-back-btn");
 var clearHighScores = document.getElementById("clear-scores-btn");
+
+// *****************
+// GLOBAL VARIABLES
+// *****************
+
+var questions = [];
+var totalTime = ;
+
+
+// **********
+// FUNCTIONS
+// **********
+
+// * WHEN I click the start button, timer starts
+var newQuiz = function() {
+
+};
