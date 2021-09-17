@@ -129,12 +129,12 @@ var newQuiz = function() {
     nextQuestion();
 };
 
-/*var randomQuestion = function(questions) {
+var randomQuestion = function(questions) {
     var randomIndex = [Math.floor(Math.random() * questions.length)];
     return randomIndex;
-};*/
+};
 
-/*var nextQuestion = function() {
+var nextQuestion = function() {
     // chooses random question from a questions array, with question id
     var randomQuestion = function(questions) {
         var randomIndex = [Math.floor(Math.random() * questions.length)];
@@ -145,7 +145,7 @@ var newQuiz = function() {
     // choiceB.textContent = questions[0].choices[1];
     // choiceC.textContent = questions[0].choices[2];
     // choiceD.textContent = questions[0].choices[3];
-};*/
+};
 
 //var nextQuestion()
 
