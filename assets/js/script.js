@@ -250,14 +250,6 @@ var showHighScores = function() {
     }
     //console.log(prevHighScores);
 
-    // // highscores page
-    // // highscores div
-    // var highScores = document.getElementById("highscores");
-    // // list fo scores
-    // var highScoresList = document.getElementById("highscores-list");
-    // var goBackBtn = document.getElementById("go-back-btn");
-    // var clearHighScores = document.getElementById("clear-scores-btn");
-
 
     // get any saved highscores and append to document
     var storedHighScores = JSON.parse(prevHighScores);
@@ -288,3 +280,19 @@ choiceD.addEventListener("click", chooseD);
 submitBtn.addEventListener("click", function(event) {
     saveHighScore(event);
 });
+
+goBackBtn.addEventListener("click", function() {
+    startDiv.style.display = "block";
+    highScores.style.display = "none";
+    highScoresList.style.display = "none";
+});
+
+clearHighScores.addEventListener("click", function() {
+    localStorage.removeItem("high scores");
+    highScoresList.innerHTML = "High Scores Cleared!";
+});
+
+viewHighScores.addEventListener("click", function() {
+    showHighScores();
+});
+
