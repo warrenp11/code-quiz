@@ -38,7 +38,7 @@ var wrongOrRight = document.getElementById("wrong-or-right");
 // final score page
 var score = document.getElementById("score");
 var finalScore = document.getElementById("finalScore")
-var initials = document.getElementById("initials-input");
+var initialsInput = document.getElementById("initials-input");
 var submitBtn = document.getElementById("submit-score");
 // highscores page
 var highScores = document.getElementById("highscores");
@@ -82,6 +82,7 @@ var totalTime = 100;
 var correctAns = 0;
 var questionIndex = 0;
 var highScoresArr = [];
+
 
 
 // **********
@@ -164,6 +165,7 @@ var checkAnswer = function(answer) {
     }
 };
 
+
 // // * WHEN all questions are answered or the timer reaches 0, game over
 var gameOver = function() {
     score.style.display = "block";
@@ -176,57 +178,85 @@ var gameOver = function() {
     finalScore.textContent = correctAns;
 };
 
+
+
+
+// ////////////////////////////
+// ***** FIX CODE BELOW HERE
+// ////////////////////////////
+
+
+
 // * THEN I can save my initials and score
-var saveHighScore = function() {
+var saveHighScore = function(event) {
+    event.preventDefault();
 
     // if initials left blank, prompt user to enter initials
-    if (initials.value === "") {
+    if (initialsInput.value === "") {
         alert("Please enter your initials");
         return;
-    }
+    } 
 
-    highScoresList.style.display = "none";
     score.style.display = "block";
+    highScoresList.style.display = "none";
     timesUp.style.display = "none";
     timer.style.display = "none";
     startDiv.style.display = "none";
     quizDiv.style.display = "none";
 
-    // object that holds user initials and score to be saved
+    // var totalTime = 100;
+    // var correctAns = 0;
+    // var questionIndex = 0;
+    // var highScoresArr = [];
+    // var prevHighScores;
+
+    var prevHighScores= localStorage.getItem("high scores");
+
+    // if there are no previous highscores, create new array
+    if (prevHighScores === null) {
+        highScoresArr = [];
+    } else {
+        // take filled string of previous highscores and parse
+        highScoresArr = JSON.parse(prevHighScores);
+    }
+
+    // object that holds user initials and score to be saved as object within highScoresArr
     var userScore = {
-        initials: initials.textContent,
-        score: finalScore.value
+        initials: initialsInput.value,
+        score: finalScore.textContent
     };
+    console.log(userScore);
+    
     // push score to highscores list(array)
     highScoresArr.push(userScore);
     // save to local storage
     localStorage.setItem("high scores", JSON.stringify(highScoresArr));
 
     // show current highscores
-    showHighScores();
+    //showHighScores();
 };
 
-var showHighScores = function() {
+// var showHighScores = function() {
 
-    highScoresList.style.display = "block";
-    score.style.display = "none";
-    timesUp.style.display = "none";
-    timer.style.display = "none";
-    startDiv.style.display = "none";
-    quizDiv.style.display = "none";
+//     highScoresList.style.display = "block";
+//     score.style.display = "none";
+//     timesUp.style.display = "none";
+//     timer.style.display = "none";
+//     startDiv.style.display = "none";
+//     quizDiv.style.display = "none";
 
-    // check if any highscores in local storage
-    if (=== null) {
-        return;
-    }
+//     // check if any highscores in local storage
+//     if (=== null) {
+//         return;
+//     }
 
-    // get highscores from local storage
-    localStorage.getItem("high scores", JSON.parse(highScoresArr));
+//     // get highscores from local storage
+//     localStorage.getItem("high scores", JSON.parse(highScoresArr));
 
-    for (i = 0; i < highScoresArr.length; i++) {
-        highScoresList.appendChild()
-    }
-};
+//     for (i = 0; i < highScoresArr.length; i++) {
+//         highScoresList.appendChild()
+//     }
+// };
 
 
 
@@ -242,4 +272,6 @@ choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
 
-submitBtn.addEventListener("click", saveHighScore);
+submitBtn.addEventListener("click", function(event) {
+    saveHighScore(event);
+});
