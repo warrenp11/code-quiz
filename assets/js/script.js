@@ -40,8 +40,11 @@ var score = document.getElementById("score");
 var finalScore = document.getElementById("finalScore")
 var initialsInput = document.getElementById("initials-input");
 var submitBtn = document.getElementById("submit-score");
+
 // highscores page
+// highscores div
 var highScores = document.getElementById("highscores");
+// list fo scores
 var highScoresList = document.getElementById("highscores-list");
 var goBackBtn = document.getElementById("go-back-btn");
 var clearHighScores = document.getElementById("clear-scores-btn");
@@ -82,7 +85,7 @@ var totalTime = 100;
 var correctAns = 0;
 var questionIndex = 0;
 var highScoresArr = [];
-
+var prevHighScores = localStorage.getItem("high scores");
 
 
 // **********
@@ -95,6 +98,8 @@ var startQuiz = function() {
     startDiv.style.display = "none";
     quizDiv.style.display = "block";
     timer.style.display = "block";
+    highScores.style.display = "none";
+    highScoresList.style.display = "none";
 
     // * THEN a timer starts
     var startTimer = setInterval(function() {
@@ -165,7 +170,6 @@ var checkAnswer = function(answer) {
     }
 };
 
-
 // // * WHEN all questions are answered or the timer reaches 0, game over
 var gameOver = function() {
     score.style.display = "block";
@@ -191,12 +195,6 @@ var gameOver = function() {
 var saveHighScore = function(event) {
     event.preventDefault();
 
-    // if initials left blank, prompt user to enter initials
-    if (initialsInput.value === "") {
-        alert("Please enter your initials");
-        return;
-    } 
-
     score.style.display = "block";
     highScoresList.style.display = "none";
     timesUp.style.display = "none";
@@ -204,13 +202,13 @@ var saveHighScore = function(event) {
     startDiv.style.display = "none";
     quizDiv.style.display = "none";
 
-    // var totalTime = 100;
-    // var correctAns = 0;
-    // var questionIndex = 0;
-    // var highScoresArr = [];
-    // var prevHighScores;
+    // if initials left blank, prompt user to enter initials
+    if (initialsInput.value === "") {
+        alert("Please enter your initials");
+        return;
+    } 
 
-    var prevHighScores= localStorage.getItem("high scores");
+    // var prevHighScores = localStorage.getItem("high scores");
 
     // if there are no previous highscores, create new array
     if (prevHighScores === null) {
@@ -225,7 +223,7 @@ var saveHighScore = function(event) {
         initials: initialsInput.value,
         score: finalScore.textContent
     };
-    console.log(userScore);
+    //console.log(userScore);
     
     // push score to highscores list(array)
     highScoresArr.push(userScore);
@@ -233,30 +231,45 @@ var saveHighScore = function(event) {
     localStorage.setItem("high scores", JSON.stringify(highScoresArr));
 
     // show current highscores
-    //showHighScores();
+    showHighScores();
 };
 
-// var showHighScores = function() {
+var showHighScores = function() {
 
-//     highScoresList.style.display = "block";
-//     score.style.display = "none";
-//     timesUp.style.display = "none";
-//     timer.style.display = "none";
-//     startDiv.style.display = "none";
-//     quizDiv.style.display = "none";
+    highScores.style.display = "block";
+    highScoresList.style.display = "block";
+    score.style.display = "none";
+    timesUp.style.display = "none";
+    timer.style.display = "none";
+    startDiv.style.display = "none";
+    quizDiv.style.display = "none";
 
-//     // check if any highscores in local storage
-//     if (=== null) {
-//         return;
-//     }
+    // check if any highscores in local storage
+    if (prevHighScores === null) {
+        return;
+    }
+    //console.log(prevHighScores);
 
-//     // get highscores from local storage
-//     localStorage.getItem("high scores", JSON.parse(highScoresArr));
+    // // highscores page
+    // // highscores div
+    // var highScores = document.getElementById("highscores");
+    // // list fo scores
+    // var highScoresList = document.getElementById("highscores-list");
+    // var goBackBtn = document.getElementById("go-back-btn");
+    // var clearHighScores = document.getElementById("clear-scores-btn");
 
-//     for (i = 0; i < highScoresArr.length; i++) {
-//         highScoresList.appendChild()
-//     }
-// };
+
+    // get any saved highscores and append to document
+    var storedHighScores = JSON.parse(prevHighScores);
+
+    for (var i = 0; i < storedHighScores.length; i++) {
+        var eachNewHighScore = document.createElement("p");
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
+        highScoresList.appendChild(eachNewHighScore);
+    }
+
+    
+};
 
 
 
