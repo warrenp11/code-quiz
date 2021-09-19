@@ -37,9 +37,9 @@ var choiceD = document.getElementById("btn-4");
 var wrongOrRight = document.getElementById("wrong-or-right");
 // final score page
 var score = document.getElementById("score");
-var intitals = document.getElementById("initials-input");
-var submitBtn = document.getElementById("submit-score");
 var finalScore = document.getElementById("finalScore")
+var initials = document.getElementById("initials-input");
+var submitBtn = document.getElementById("submit-score");
 // highscores page
 var highScores = document.getElementById("highscores");
 var highScoresList = document.getElementById("highscores-list");
@@ -81,6 +81,7 @@ var questions = [
 var totalTime = 100;
 var correctAns = 0;
 var questionIndex = 0;
+var highScoresArr = [];
 
 
 // **********
@@ -125,7 +126,19 @@ var nextQuestion = function() {
     choiceD.textContent = questions[questionIndex].choices[3];
 };
 
-
+// * WHEN I answer a question
+var chooseA = function (){
+    checkAnswer(0);
+};
+var chooseB = function (){
+    checkAnswer(1);
+};
+var chooseC = function (){
+    checkAnswer(2);
+};
+var chooseD = function (){
+    checkAnswer(3);
+};
 
 // after question is answered, show if wrong or right
 var checkAnswer = function(answer) {
@@ -151,22 +164,7 @@ var checkAnswer = function(answer) {
     }
 };
 
-// * WHEN I answer a question
-var chooseA = function (){
-    checkAnswer(0);
-};
-var chooseB = function (){
-    checkAnswer(1);
-};
-var chooseC = function (){
-    checkAnswer(2);
-};
-var chooseD = function (){
-    checkAnswer(3);
-};
-
-
-// game over
+// // * WHEN all questions are answered or the timer reaches 0, game over
 var gameOver = function() {
     score.style.display = "block";
     timesUp.style.display = "block";
@@ -178,6 +176,58 @@ var gameOver = function() {
     finalScore.textContent = correctAns;
 };
 
+// * THEN I can save my initials and score
+var saveHighScore = function() {
+
+    // if initials left blank, prompt user to enter initials
+    if (initials.value === "") {
+        alert("Please enter your initials");
+        return;
+    }
+
+    highScoresList.style.display = "none";
+    score.style.display = "block";
+    timesUp.style.display = "none";
+    timer.style.display = "none";
+    startDiv.style.display = "none";
+    quizDiv.style.display = "none";
+
+    // object that holds user initials and score to be saved
+    var userScore = {
+        initials: initials.textContent,
+        score: finalScore.value
+    };
+    // push score to highscores list(array)
+    highScoresArr.push(userScore);
+    // save to local storage
+    localStorage.setItem("high scores", JSON.stringify(highScoresArr));
+
+    // show current highscores
+    showHighScores();
+};
+
+var showHighScores = function() {
+
+    highScoresList.style.display = "block";
+    score.style.display = "none";
+    timesUp.style.display = "none";
+    timer.style.display = "none";
+    startDiv.style.display = "none";
+    quizDiv.style.display = "none";
+
+    // check if any highscores in local storage
+    if (=== null) {
+        return;
+    }
+
+    // get highscores from local storage
+    localStorage.getItem("high scores", JSON.parse(highScoresArr));
+
+    for (i = 0; i < highScoresArr.length; i++) {
+        highScoresList.appendChild()
+    }
+};
+
 
 
 
@@ -186,9 +236,10 @@ var gameOver = function() {
 // *****************
 
 startQuizBtn.addEventListener("click", startQuiz);
+
 choiceA.addEventListener("click", chooseA);
 choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
 
-//submitBtn.addEventListener("click", );
+submitBtn.addEventListener("click", saveHighScore);
