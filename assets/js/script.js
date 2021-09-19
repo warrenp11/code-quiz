@@ -290,6 +290,7 @@ goBackBtn.addEventListener("click", function() {
 clearHighScores.addEventListener("click", function() {
     localStorage.removeItem("high scores");
     highScoresList.innerHTML = "High Scores Cleared!";
+
 });
 
 viewHighScores.addEventListener("click", function() {
