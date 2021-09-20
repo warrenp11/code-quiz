@@ -1,13 +1,14 @@
 # Code Quiz
 
-# Description
-This coding quiz was designed as a homework assignment for Rutgers Coding Boot Camp. I was required to create a timed coding quiz that randomly asked the user questions and met all of the acceptance criteria (see Acceptance Criteria).
+## Description
+This coding quiz was designed as a homework assignment for Rutgers Coding Boot Camp. I was required to create a timed coding quiz that randomly asked the user questions and met all of the acceptance criteria (see Acceptance Criteria below).
 
 This application was written from scratch, no base code was provided.
 
-# Installation
-No installation required. (see Websites below) 
-# Instructions
+## Installation
+No installation required (see Websites below).
+
+## Instructions
 1. On the home page, click "Start Quiz"
 2. You will be prompted with a  series of multiple choice questions
     * You will have 100 seconds to answer all questions
@@ -15,17 +16,28 @@ No installation required. (see Websites below)
     * If a question is answered incorrectly, 10 seconds will be deducted from your time
 3. When all questions are answered, or the time reaches 0, the quiz is over
 4. Enter your initials to submit your score to the High Scores list
-# Screenshot/Video
-The home page for the coding quiz
-![Coding Quiz Home Page](./assets/images/ "Coding Quiz Home Page")
 
-# Features
+## Screenshot/Video
+### The home page for the coding quiz
+![Coding Quiz Home Page](./assets/images/start-page.png "Coding Quiz Home Page")
+
+### Quiz page
+![Quiz Example](./assets/images/quiz.png "Quiz Page Example")
+
+### Final Score page 
+![Final Score Example](./assets/images/final-score.png "Final Score example" )
+
+### High Scores page 
+![High Scores Example](./assets/images/high-scores.png "High Scores example" )
+
+## Features
 * HTML
 * CSS
 * Javascript
 * Bootstrap
+* JQuery
 
-# Websites
+## Websites
 * GibHub: https://github.com/warrenp11/code-quiz
 * Deployed: ""
 
@@ -42,7 +54,7 @@ The home page for the coding quiz
 * WHEN the game is over
 * THEN I can save my initials and score
 
-# Project Insight
+## Project Insight
 
-# Author
+## Author
 Peter Warren
